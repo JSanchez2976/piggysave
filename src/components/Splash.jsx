@@ -4,10 +4,13 @@ function Splash() {
     return (
         <>
             <div className="vw-100 vh-100 bg-green-solid d-flex justify-content-center align-items-center">
-                    <div className="container w-75 d-flex flex-column align-items-center text-center fade-in">
-                        <img src={piggyLogo} className="img-splash mb-4"></img>
-                        <h1 className="splash text-white">PiggySave</h1>
+                <div className="container w-75 d-flex flex-column align-items-center text-center fade-in gap-2">
+                    <img src={piggyLogo} className="img-splash"></img>
+                    <h1 className="text-white-mint">PiggySave</h1>
+                    <div className="spinner-border text-white-mint" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
+                </div>
             </div>
         </>
     )

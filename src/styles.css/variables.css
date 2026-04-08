@@ -1,0 +1,38 @@
+.bg-green-solid{
+    background-color: #00C9A7;
+}
+
+.bg-white-mint{
+    background-color: #F0FFF9;
+}
+
+.text-green-solid{
+    color: #00C9A7;
+}
+
+
+
+.img-splash {
+    width: 60%;
+    max-width: 100%;
+}
+
+
+@media (min-width: 992px) {
+    .img-splash {
+        width: 25%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 300ms ease-in;
+}

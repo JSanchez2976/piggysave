@@ -5,7 +5,7 @@ function LoginButton() {
 
     return (
         <button
-            className="bg-green-solid w-100 rounded p-2"
+            className="bg-green-solid text-green-dark w-100 rounded p-2"
             onClick={() => navigate("/login")}>
             Log In
         </button>

@@ -1,16 +1,20 @@
-.bg-green-solid{
+.bg-green-solid {
     background-color: #00C9A7;
 }
 
-.bg-white-mint{
+.bg-white-mint {
     background-color: #F0FFF9;
 }
 
-.text-green-solid{
+.text-green-solid {
     color: #00C9A7;
 }
 
-.text-white-mint{
+.text-green-dark {
+    color: #00362d;
+}
+
+.text-white-mint {
     color: #F0FFF9;
 }
 
@@ -20,6 +24,19 @@
     max-width: 100%;
 }
 
+.slice-circle {
+    background-color: #E6F7F0;
+    width: 60%;
+    aspect-ratio: 1/1;
+    max-height: 100%;
+    border-radius: 50%;
+}
+
+@media (min-width: 992px) {
+    .slice-circle {
+        width: 30%;
+    }
+}
 
 @media (min-width: 992px) {
     .img-splash {
@@ -31,6 +48,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }

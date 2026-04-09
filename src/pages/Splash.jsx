@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router-dom"
 import piggyLogo from "../assets/piggyLogo.png"
+import { useEffect } from "react"
 
 function Splash() {
+    const navigate = useNavigate()
+    
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          navigate("/auth")
+        }, 3000)
+        return () => clearTimeout(timer)
+      }, [navigate])
+
     return (
         <>
             <div className="vw-100 vh-100 bg-green-solid d-flex justify-content-center align-items-center">

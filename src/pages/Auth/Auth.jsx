@@ -1,7 +1,5 @@
 import piggyLogo from "../../assets/piggyLogo.png"
-import RecoveryText from "../../components/UI/RecoveryText"
-import LoginButton from "../../components/UI/LoginButton"
-import SignUpButton from "../../components/UI/SignUpButton"
+import { LoginButton, RecoveryText, SignUpButton } from "../../components"
 
 function Auth() {
     return (
@@ -11,9 +9,9 @@ function Auth() {
                     <img src={piggyLogo} className="img-splash "></img>
                     <h1 className="text-green-solid">PiggySave</h1>
                     <p className="text-justify">Manage your finances intelligently</p>
-                    <LoginButton/>
-                    <SignUpButton/>
-                    <RecoveryText/>
+                    <LoginButton />
+                    <SignUpButton />
+                    <RecoveryText />
                 </div>
             </div>
         </>

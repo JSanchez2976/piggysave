@@ -1,3 +1,3 @@
-export {default as LoginButton} from "./UI/LoginButton";
-export {default as RecoveryText} from "./UI/RecoveryText";
-export {default as SignUpButton} from "./UI/SignUpButton";
+export {default as CustomClicableText} from "./UI/CustomClicableText";
+export {default as CustomButton} from "./UI/CustomButton";
+export {default as FormBackground} from "./UI/FormBackground";

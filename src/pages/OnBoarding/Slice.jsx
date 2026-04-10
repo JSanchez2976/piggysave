@@ -1,6 +1,6 @@
 
 
-function SliceA({ text }) {
+function Slice({ text }) {
     return (
         <>
             <div className="vh-100 d-flex flex-column">
@@ -23,4 +23,4 @@ function SliceA({ text }) {
     )
 }
 
-export default SliceA
+export default Slice

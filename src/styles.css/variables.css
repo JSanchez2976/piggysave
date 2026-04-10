@@ -18,6 +18,25 @@
     color: #F0FFF9;
 }
 
+.cust-button{
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .cust-button{
+        width: 30%;
+    }
+}
+
+.cust-input{
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .cust-input{
+        width: 30%;
+    }
+}
 
 .img-splash {
     width: 60%;

@@ -23,9 +23,13 @@ function FillRegister() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newUser),
             });
-
             const result = await response.json();
             console.log('Respuesta del servidor:', result);
+
+            if(response.status == "200"){
+                navigate("/login")
+                return alert("Account created succesfully")
+            }
             if (result.detail == 'User already exists') {
                 return alert("User already exists")
             }

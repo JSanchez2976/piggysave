@@ -28,9 +28,10 @@ function FillLogin() {
 
             const result = await response.json();
             console.log('Respuesta del servidor:', result);
-            localStorage.setItem("token",result.access_token)
+            
             
             if(response.status == 200){
+                localStorage.setItem("token",result.access_token)
                 navigate("/home")
             }
             if(response.status == 401){

@@ -1,17 +1,24 @@
 import { useNavigate } from "react-router-dom"
 import piggyIcon from "../assets/piggyIcon.png"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import OnBoard from "./OnBoarding/OnBoard"
 
 function Splash() {
     const navigate = useNavigate()
-    
-      useEffect(() => {
+    const [showOnBoard, setShowOnBoard] = useState(false)
+
+    useEffect(() => {
         const timer = setTimeout(() => {
-          navigate("/auth",{replace:true})
+            if (localStorage.getItem('token') == null) {
+                setShowOnBoard(true)
+            } else {
+                navigate("/auth")
+            }
         }, 3000)
         return () => clearTimeout(timer)
-      }, [navigate])
+    }, [navigate])
 
+    if(showOnBoard) return <OnBoard/>
     return (
         <>
             <div className="vw-100 vh-100 bg-green-solid d-flex justify-content-center align-items-center">

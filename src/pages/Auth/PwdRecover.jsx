@@ -33,6 +33,9 @@ function FillPwdRecover() {
             navigate("/login")
             return alert("Password updated succesfully")
         }
+        if (response.status == "401") {
+            return alert("You must have previously logged in to change your password.")
+        }
         if (response.status == "404") {
             return alert("User not found")
         }

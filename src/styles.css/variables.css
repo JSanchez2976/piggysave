@@ -18,22 +18,36 @@
     color: #F0FFF9;
 }
 
-.cust-button{
+.round-button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.round-button.active {
+    background-color: #00C9A7;
+}
+
+.cust-button {
     width: 100%;
 }
 
 @media (min-width: 992px) {
-    .cust-button{
+    .cust-button {
         width: 30%;
     }
 }
 
-.cust-input{
+.cust-input {
     width: 100%;
 }
 
 @media (min-width: 992px) {
-    .cust-input{
+    .cust-input {
         width: 30%;
     }
 }
@@ -45,10 +59,15 @@
 
 .slice-circle {
     background-color: #E6F7F0;
-    width: 60%;
+    width: 90%;
     aspect-ratio: 1/1;
     max-height: 100%;
     border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 @media (min-width: 992px) {

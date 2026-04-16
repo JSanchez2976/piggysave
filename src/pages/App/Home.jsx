@@ -1,27 +1,11 @@
+import NavBarBottom from "../../components/UI/NavBarBottom"
 import NavBarTop from "../../components/UI/NavBarTop"
 
 function Home() {
     return (
         <div className="vh-100 d-flex flex-column">
-            {/* NAVBAR PARA PC (Arriba) */}
             <NavBarTop></NavBarTop>
-
-            {/* NAVBAR PARA MÓVIL (Abajo) */}
-            <nav className="navbar navbar-dark bg-primary fixed-bottom d-md-none">
-                <div className="container-fluid">
-                    <div className="d-flex justify-content-around w-100">
-                        <a className="nav-link text-white text-center" href="#">
-                            <i className="bi bi-house"></i><br /><small>Inicio</small>
-                        </a>
-                        <a className="nav-link text-white text-center" href="#">
-                            <i className="bi bi-search"></i><br /><small>Buscar</small>
-                        </a>
-                        <a className="nav-link text-white text-center" href="#">
-                            <i className="bi bi-person"></i><br /><small>Perfil</small>
-                        </a>
-                    </div>
-                </div>
-            </nav>
+            <NavBarBottom/>
 
             <div className="vw-100 bg-green-solid d-flex justify-content-center align-items-center position-relative px-5"
                 style={{ height: "35%" }}>

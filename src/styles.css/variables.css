@@ -6,6 +6,10 @@
     background-color: #cee7e3;
 }
 
+.bg-yellow-soft{
+    background-color: #cef8b5;
+}
+
 .bg-white-mint {
     background-color: #F0FFF9;
 }
@@ -56,6 +60,11 @@
     .cust-input {
         width: 30%;
     }
+}
+
+
+.nav-img.active {
+    background: #00362d;
 }
 
 .nav-link {

@@ -26,7 +26,7 @@ function FillRegister() {
             const result = await response.json();
             console.log('Respuesta del servidor:', result);
 
-            if(response.status == "200"){
+            if (response.status == "200") {
                 navigate("/login")
                 return alert("Account created succesfully")
             }
@@ -40,18 +40,18 @@ function FillRegister() {
 
     return (
         <>
-            <p>User: </p>
-            <input type="text" className="cust-input"
+            User:
+            <input type="text" className="cust-input rounded"
                 onChange={(e) => setuserName(e.target.value)}
                 placeholder="user1234" ></input>
-            <p>Password: </p>
-            <input type="password" className="cust-input"
+            Password:
+            <input type="password" className="cust-input rounded"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="******"></input>
 
             <CustomButton
                 onClick={handleSubmit}
-                className="bg-white-mint text-green-solid form-element rounded p-2"
+                className="text-green-dark bg-green-solid form-element rounded p-2"
                 text="Sign up"
             />
 

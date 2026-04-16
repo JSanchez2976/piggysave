@@ -2,6 +2,10 @@
     background-color: #00C9A7;
 }
 
+.bg-green-soft {
+    background-color: #cee7e3;
+}
+
 .bg-white-mint {
     background-color: #F0FFF9;
 }
@@ -44,12 +48,26 @@
 
 .cust-input {
     width: 100%;
+    background-color: #cee7e3;
+    padding: 5px;
 }
 
 @media (min-width: 992px) {
     .cust-input {
         width: 30%;
     }
+}
+
+.nav-link {
+    color: #00362d !important;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    font-weight: bold;
 }
 
 .img-splash {

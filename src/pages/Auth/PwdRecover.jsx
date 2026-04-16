@@ -46,12 +46,12 @@ function FillPwdRecover() {
 
     return (
         <>
-            <p>User: </p>
-            <input type="text" className="cust-input"
+            User:
+            <input type="text" className="cust-input rounded"
                 onChange={(e) => setuserName(e.target.value)}
                 placeholder="user1234" ></input>
-            <p>New password: </p>
-            <input type="password" className="cust-input"
+            New password:
+            <input type="password" className="cust-input rounded"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="******"></input>
 

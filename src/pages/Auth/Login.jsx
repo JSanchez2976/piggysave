@@ -28,13 +28,13 @@ function FillLogin() {
 
             const result = await response.json();
             console.log('Respuesta del servidor:', result);
-            
-            
-            if(response.status == 200){
-                localStorage.setItem("token",result.access_token)
+
+
+            if (response.status == 200) {
+                localStorage.setItem("token", result.access_token)
                 navigate("/home")
             }
-            if(response.status == 401){
+            if (response.status == 401) {
                 return alert("Invalid credentials")
             }
         } catch (error) {
@@ -44,12 +44,12 @@ function FillLogin() {
 
     return (
         <>
-            <p>User: </p>
-            <input type="text" className="cust-input"
+            User:
+            <input type="text" className="cust-input rounded"
                 onChange={(e) => setuserName(e.target.value)}
                 placeholder="user1234" ></input>
-            <p>Password: </p>
-            <input type="password" className="cust-input"
+            Password:
+            <input type="password" className="cust-input rounded"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="******"></input>
             <CustomButton
@@ -62,7 +62,7 @@ function FillLogin() {
             />
             <CustomButton
                 onClick={() => navigate("/register")}   // cambiar luego
-                className="bg-white-mint text-green-solid form-element rounded p-2"
+                className="bg-green-soft text-green-dark form-element rounded p-2"
                 text="Sign up"
             />
         </>

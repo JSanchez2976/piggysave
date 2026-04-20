@@ -1,4 +1,4 @@
-import Slice from "../../components/UI/Slice"
+import Slice from "../../components/UI/OnBoard/Slice"
 import Slice1 from "../../assets/Slice1.png"
 import Slice2 from "../../assets/Slice2.png"
 import { useState } from "react";

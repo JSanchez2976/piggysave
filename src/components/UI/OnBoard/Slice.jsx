@@ -1,4 +1,4 @@
-import FormBackground from "./FormBackground";
+import FormBackground from "../FormBackground";
 
 function Slice({ title, img, body }) {
     const sliceContent = (

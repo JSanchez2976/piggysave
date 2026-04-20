@@ -39,7 +39,7 @@ function AnalysisOptions({routes}){
                         className="text-decoration-none d-block rounded-pill border border-3 border-danger p-4 bg-light shadow-sm w-100 text-center"
                     >
                         <h2 className="fs-4 fw-bold text-danger m-0">
-                            REMOVE
+                            DELETE
                         </h2>
                     </Link>
                 </div>

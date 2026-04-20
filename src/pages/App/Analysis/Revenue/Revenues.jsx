@@ -1,4 +1,4 @@
-import { AnalysisOptions, AppBackground } from "../../../components"
+import { AnalysisOptions, AppBackground } from "../../../../components"
 
 const routes = {
     createRoute:"/analysis/revenues/create",
@@ -10,7 +10,7 @@ function Revenues() {
     return (
         <AppBackground 
         title={"Revenues"} 
-        greenDivStyle={"d-flex flex-column justify-content-around align-items-center"}>
+        whiteDivStyle={"d-flex flex-column justify-content-around align-items-center"}>
             <AnalysisOptions
                 routes={routes}
                 />

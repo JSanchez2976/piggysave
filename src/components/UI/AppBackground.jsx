@@ -1,7 +1,7 @@
 import NavBarBottom from "./NavBarBottom"
 import NavBarTop from "./NavBarTop"
 
-function AppBackground({ children, title, greenDivStyle="" }) {
+function AppBackground({ children, title, whiteDivStyle="" }) {
     return (
         <div className="vh-100 d-flex flex-column">
 
@@ -13,7 +13,7 @@ function AppBackground({ children, title, greenDivStyle="" }) {
                 <h1 className="text-green-dark mt-5">{title}</h1>
             </div>
 
-            <div className={`vw-100 bg-white-mint z-1 position-absolute ${greenDivStyle}`}
+            <div className={`vw-100 bg-white-mint z-1 position-absolute ${whiteDivStyle}`}
                 style={{
                     height: "75%",
                     bottom: 0,

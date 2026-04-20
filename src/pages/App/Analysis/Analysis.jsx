@@ -42,7 +42,7 @@ function FillAnalysis() {
 
 function Analysis() {
     return (
-        <AppBackground title={"Analysis"} greenDivStyle={"d-flex flex-column justify-content-around align-items-center"}><FillAnalysis /></AppBackground>
+        <AppBackground title={"Analysis"} whiteDivStyle={"d-flex flex-column justify-content-around align-items-center"}><FillAnalysis /></AppBackground>
     )
 }
 

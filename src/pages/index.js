@@ -1,11 +1,15 @@
 export {default as Splash} from "./Splash";
+export {default as OnBoard} from "./OnBoarding/OnBoard"
 export {default as Auth} from "./Auth/Auth";
-export {default as Login}from "./Auth/Login";
+export {default as Login} from "./Auth/Login";
 export {default as PwdRecover} from "./Auth/PwdRecover";
 export {default as Register} from "./Auth/Register";
 export {default as Home} from "./App/Home";
 export {default as Analysis} from "./App/Analysis/Analysis";
-export {default as Expenses} from "./App/Analysis/Expenses";
-export {default as Revenues} from "./App/Analysis/Revenues";
+export {default as Expenses} from "./App/Analysis/Expense/Expenses";
+export {default as CreateExpense} from "./App/Analysis/Expense/CreateExpense";
+export {default as UpdateExpense} from "./App/Analysis/Expense/UpdateExpense";
+export {default as DeleteExpense} from "./App/Analysis/Expense/DeleteExpense";
+export {default as Revenues} from "./App/Analysis/Revenue/Revenues";
 export {default as Categories} from "./App/Categories";
 export {default as Profile} from "./App/Profile";

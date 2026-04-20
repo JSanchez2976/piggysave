@@ -1,4 +1,4 @@
-import { AnalysisOptions, AppBackground } from "../../../components"
+import { AnalysisOptions, AppBackground } from "../../../../components"
 
 const routes = {
     createRoute:"/analysis/expenses/create",

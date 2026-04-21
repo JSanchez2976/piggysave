@@ -10,7 +10,7 @@ function Expenses() {
     return (
         <AppBackground 
         title={"Expenses"} 
-        greenDivStyle={"d-flex flex-column justify-content-around align-items-center"}>
+        whiteDivStyle={"d-flex flex-column justify-content-around align-items-center"}>
             <AnalysisOptions
                 routes={routes}
                 />

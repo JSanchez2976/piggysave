@@ -32,6 +32,7 @@ function FillLogin() {
 
             if (response.status == 200) {
                 localStorage.setItem("token", result.access_token)
+                localStorage.setItem("username", userName)
                 navigate("/home")
             }
             if (response.status == 401) {

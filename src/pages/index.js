@@ -12,5 +12,7 @@ export {default as UpdateExpense} from "./App/Analysis/Expense/UpdateExpense";
 export {default as DeleteExpense} from "./App/Analysis/Expense/DeleteExpense";
 export {default as Revenues} from "./App/Analysis/Revenue/Revenues";
 export {default as CreateRevenue} from "./App/Analysis/Revenue/CreateRevenue";
+export {default as UpdateRevenue} from "./App/Analysis/Revenue/UpdateRevenue";
+export {default as DeleteRevenue} from "./App/Analysis/Revenue/DeleteRevenue";
 export {default as Categories} from "./App/Categories";
 export {default as Profile} from "./App/Profile";

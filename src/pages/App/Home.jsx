@@ -1,5 +1,26 @@
 import { useEffect, useState } from "react";
 import { AppBackground } from "../../components"
+import { Line } from "react-chartjs-2";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 function Home() {
     const [expenses, setExpenses] = useState([])
@@ -20,8 +41,6 @@ function Home() {
                 },
             });
             const data = await response.json();
-            console.log("Respuesta del servidor ", data)
-
             setExpenses(data);
         } catch (err) {
             console.error(err);
@@ -38,8 +57,6 @@ function Home() {
                 },
             });
             const data = await response.json();
-            console.log("Respuesta del servidor ", data)
-
             setRevenues(data);
         } catch (err) {
             console.error(err);
@@ -47,21 +64,42 @@ function Home() {
     };
 
     const getTotalExpense = () => {
-        let total = 0
-        expenses.forEach(exp => total += exp.importe)
-        return total
+        return expenses.reduce((total, exp) => total + exp.importe, 0);
     }
 
     const getTotalRevenue = () => {
-        let total = 0
-        revenues.forEach(rev => total += rev.importe)
-        return total
+        return revenues.reduce((total, rev) => total + rev.importe, 0);
     }
+
+    const getExpensesAndRevenuesDates = () => {
+        return [
+            ...expenses.map(exp => exp.fecha),
+            ...revenues.map(rev => rev.fecha)
+        ];
+    }
+    console.log(getExpensesAndRevenuesDates())
+    console.log(revenues)
+    const chartData = {
+        labels: getExpensesAndRevenuesDates(),
+        datasets: [
+            {
+                label: "Revenue",
+                data: revenues.map(rev => rev.importe),
+                borderColor: "rgb(75, 192, 192)",
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+            },
+            {
+                label: "Expenses",
+                data: expenses.map(exp => exp.importe),
+                borderColor: "rgb(255, 99, 132)",
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+            }
+        ]
+    };
 
     return (
         <AppBackground title={"Home"}
-            whiteDivStyle="p-2  ">
-            {/* SECCIÓN DE EXPENSES Y REVENUES */}
+            whiteDivStyle="p-2">
             <div className="w-100 px-4 pt-4 pb-3">
                 <div className="d-flex gap-3">
                     <div className="flex-fill bg-white rounded p-3 shadow-sm">
@@ -69,27 +107,28 @@ function Home() {
                         <h4 className="mb-0 fw-bold text-danger">${getTotalExpense()}</h4>
                     </div>
                     <div className="flex-fill bg-white rounded p-3 shadow-sm">
-                        <h6 className="text-muted mb-1 small">Revenues</h6>
-                        <h4 className="mb-0 fw-bold text-success">${ getTotalRevenue()}</h4>
+                        <h6 className="text-muted mb-1 small">Revenue</h6>
+                        <h4 className="mb-0 fw-bold text-success">${getTotalRevenue()}</h4>
                     </div>
                 </div>
             </div>
 
-            {/* DASHBOARDS */}
             <div className="row g-3 px-4 pb-4">
-                <div className="col-12 col-md-6">
-                    <div className="bg-white rounded p-4 shadow-sm h-100">
-                        <h6 className="text-muted mb-3">Dashboard 1</h6>
-                        <p className="mb-0">Contenido del dashboard 1</p>
-                    </div>
-                </div>
-                <div className="col-12 col-md-6">
-                    <div className="bg-white rounded p-4 shadow-sm h-100">
-                        <h6 className="text-muted mb-3">Dashboard 2</h6>
-                        <p className="mb-0">Contenido del dashboard 2</p>
-                    </div>
-                </div>
-            </div>
+    <div className="col-12">
+        <div 
+            className="bg-white rounded p-3 shadow-sm" 
+            style={{ height: window.innerWidth < 768 ? '250px' : '350px' }}
+        >
+            <Line 
+                data={chartData} 
+                options={{ 
+                    responsive: true, 
+                    maintainAspectRatio: false 
+                }} 
+            />
+        </div>
+    </div>
+</div>
         </AppBackground>
     )
 }

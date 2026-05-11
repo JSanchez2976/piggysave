@@ -22,7 +22,8 @@ function AppBackground({ children, title, whiteDivStyle="" }) {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-start",
-                    marginTop: "-3%"
+                    marginTop: "-3%",
+                    paddingBottom: "78px"   // lo q mide la barra de abajo 
                 }}>
                 {children}
             </div>

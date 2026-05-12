@@ -71,26 +71,44 @@ function Home() {
         return revenues.reduce((total, rev) => total + rev.importe, 0);
     }
 
-    const getExpensesAndRevenuesDates = () => {
-        return [
-            ...expenses.map(exp => exp.fecha),
-            ...revenues.map(rev => rev.fecha)
-        ];
+    const getFormatedArray = () => {
+        // duplicados en expenses
+        const expensesMap = {};
+        expenses.forEach(exp => {
+            expensesMap[exp.fecha] = (expensesMap[exp.fecha] || 0) + exp.importe*-1;    // pasarlo a positivo
+        });
+
+        // duplicados en revenues
+        const revenuesMap = {};
+        revenues.forEach(rev => {
+            revenuesMap[rev.fecha] = (revenuesMap[rev.fecha] || 0) + rev.importe;   // or 0 porque si no existe te pone 0
+        });
+
+        // Obtener todas las fechas únicas y ordenadas
+        const allDates = Array.from(new Set([...Object.keys(expensesMap), ...Object.keys(revenuesMap)]))
+            .sort((a, b) => new Date(a) - new Date(b));
+
+        return {
+            labels: allDates,
+            expensesData: allDates.map(date => expensesMap[date] || 0),
+            revenuesData: allDates.map(date => revenuesMap[date] || 0)
+        };
     }
-    console.log(getExpensesAndRevenuesDates())
-    console.log(revenues)
+
+    const { labels, expensesData, revenuesData } = getFormatedArray();
+
     const chartData = {
-        labels: getExpensesAndRevenuesDates(),
+        labels: labels,
         datasets: [
             {
                 label: "Revenue",
-                data: revenues.map(rev => rev.importe),
+                data: revenuesData,
                 borderColor: "rgb(75, 192, 192)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
             },
             {
                 label: "Expenses",
-                data: expenses.map(exp => exp.importe),
+                data: expensesData,
                 borderColor: "rgb(255, 99, 132)",
                 backgroundColor: "rgba(255, 99, 132, 0.2)",
             }
@@ -114,21 +132,21 @@ function Home() {
             </div>
 
             <div className="row g-3 px-4 pb-4">
-    <div className="col-12">
-        <div 
-            className="bg-white rounded p-3 shadow-sm" 
-            style={{ height: window.innerWidth < 768 ? '250px' : '350px' }}
-        >
-            <Line 
-                data={chartData} 
-                options={{ 
-                    responsive: true, 
-                    maintainAspectRatio: false 
-                }} 
-            />
-        </div>
-    </div>
-</div>
+                <div className="col-12">
+                    <div
+                        className="bg-white rounded p-3 shadow-sm"
+                        style={{ height: window.innerWidth < 768 ? '250px' : '350px' }}
+                    >
+                        <Line
+                            data={chartData}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: false
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
         </AppBackground>
     )
 }

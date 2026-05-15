@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AppBackground } from "../../../../components"
+import { useNavigate } from 'react-router-dom';
 
 function UpdateRevenue() {
+    const navigate = useNavigate()
     const [revenues, setRevenues] = useState([]);
     const [selectedRevenueId, setSelectedRevenueId] = useState(null);
     const [updating, setUpdating] = useState(false);
@@ -115,7 +117,7 @@ function UpdateRevenue() {
                     ? {
                         ...rev,
                         ...formData,
-                        importe: parseFloat(formData.importe),  
+                        importe: parseFloat(formData.importe),
                         categoria: parseInt(formData.categoria),
                         fecha: new Date(formData.fecha).toISOString()
                     }
@@ -197,7 +199,7 @@ function UpdateRevenue() {
                             <div className="card" style={{ borderRadius: '16px' }}>
                                 <div className="card-body">
                                     <h5 className="card-title mb-3">
-                                        Edit Revenue
+                                        Update Revenue
                                     </h5>
 
                                     {selectedRevenueId !== null ? (
@@ -297,7 +299,13 @@ function UpdateRevenue() {
                         </div>
                     )}
                 </div>
-
+                <button
+                    type="button"
+                    className="btn btn-danger rounded-pill w-50 px-5 mt-3 fw-bold"
+                    onClick={() => navigate(-1)}
+                >
+                    BACK
+                </button>
             </div>
 
         </AppBackground>

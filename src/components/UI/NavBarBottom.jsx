@@ -6,13 +6,13 @@ import userUrl from "../../assets/user.png"
 
 function NavBarBottom() {
     return (
-        <nav className="navbar navbar-dark bg-green-solid fixed-bottom d-md-none">
+        <nav className="navbar navbar-dark fixed-bottom d-md-none app-nav-bottom">
             <div className="container-fluid px-0">
                 <div className="d-flex w-100 px-3">
                     <NavLink
                         to="/home"
                         className={({ isActive }) =>
-                            `nav-img flex-fill rounded d-flex align-items-center justify-content-center py-3  ${isActive ? "bg-yellow-soft" : ""}`
+                            `nav-img app-nav-bottom-link flex-fill d-flex align-items-center justify-content-center ${isActive ? "active" : ""}`
                         }
                     >
                         <img src={homeUrl} alt="Logo" style={{ width: 30 }} />
@@ -23,7 +23,7 @@ function NavBarBottom() {
                         id="analysis"
                         to="/analysis"
                         className={({ isActive }) =>
-                            `nav-img flex-fill rounded d-flex align-items-center justify-content-center py-3 ${isActive ? "bg-yellow-soft" : ""}`
+                            `nav-img app-nav-bottom-link flex-fill d-flex align-items-center justify-content-center ${isActive ? "active" : ""}`
                         }
                     >
                         <img src={analyticsUrl} alt="Logo" width="30" />
@@ -34,7 +34,7 @@ function NavBarBottom() {
                     <NavLink
                         to="/categories"
                         className={({ isActive }) =>
-                            `nav-img flex-fill rounded d-flex align-items-center justify-content-center py-3  ${isActive ? "bg-yellow-soft" : ""}`
+                            `nav-img app-nav-bottom-link flex-fill d-flex align-items-center justify-content-center ${isActive ? "active" : ""}`
                         }
                     >
                         <img src={categoriesUrl} alt="Logo" width="30" />
@@ -44,7 +44,7 @@ function NavBarBottom() {
                     <NavLink
                         to="/profile"
                         className={({ isActive }) =>
-                            `nav-img flex-fill rounded d-flex align-items-center justify-content-center py-3  ${isActive ? "bg-yellow-soft" : ""}`
+                            `nav-img app-nav-bottom-link flex-fill d-flex align-items-center justify-content-center ${isActive ? "active" : ""}`
                         }
                     >
                         <img src={userUrl} alt="Logo" width="30" />

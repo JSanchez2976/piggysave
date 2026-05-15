@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AppBackground } from "../../../../components"
+import { useNavigate } from 'react-router-dom';
 
 function UpdateExpense() {
+    const navigate = useNavigate()
     const [expenses, setExpenses] = useState([]);
     const [selectedExpenseId, setSelectedExpenseId] = useState(null);
     const [updating, setUpdating] = useState(false);
@@ -199,7 +201,7 @@ function UpdateExpense() {
                             <div className="card" style={{ borderRadius: '16px' }}>
                                 <div className="card-body">
                                     <h5 className="card-title mb-3">
-                                        Edit Expense
+                                        Update Expense
                                     </h5>
 
                                     {selectedExpenseId !== null ? (
@@ -299,7 +301,13 @@ function UpdateExpense() {
                         </div>
                     )}
                 </div>
-
+                <button
+                    type="button"
+                    className="btn btn-danger rounded-pill w-50 px-5 mt-3 fw-bold"
+                    onClick={() => navigate(-1)}
+                >
+                    BACK
+                </button>
             </div>
 
         </AppBackground>

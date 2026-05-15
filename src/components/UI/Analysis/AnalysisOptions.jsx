@@ -1,49 +1,37 @@
 import { Link } from "react-router-dom"
 
-function AnalysisOptions({routes}){
+const defaultActions = [
+    { key: "create", title: "Create", text: "Add a new record", tone: "create" },
+    { key: "update", title: "Update", text: "Edit existing data", tone: "update" },
+    { key: "delete", title: "Delete", text: "Remove a wrong item", tone: "delete" },
+]
+
+function AnalysisOptions({routes, sectionName="records"}){
+    const actions = defaultActions.map((action) => ({
+        ...action,
+        route:
+            action.key === "create"
+                ? routes.createRoute
+                : action.key === "update"
+                    ? routes.updateRoute
+                    : routes.deleteRoute,
+    }))
+
     return(
-         <div className="container text-center">
-            {/* g-3: espacio entre tarjetas
-               justify-content-center: por si acaso 
-            */}
-            <div className="row g-5 justify-content-center">
-
-                {/* col-12: ocupa todo el ancho en móvil 
-                   col-md-4: se pone a un tercio en PC
-                */}
-                <div className="col-12 col-md-4">
+         <div className="container-fluid text-center px-0">
+            <div className="row g-3 justify-content-center">
+                {actions.map((action) => (
+                    <div className="col-12 col-md-4" key={action.key}>
                     <Link
-                        to={routes.createRoute}
-                        className="text-decoration-none d-block rounded-pill border border-3 border-primary p-4 bg-light shadow-sm w-100 text-center"
+                        to={action.route}
+                        className={`analysis-action text-decoration-none d-block w-100 text-start analysis-action--${action.tone}`}
                     >
-                        <h2 className="fs-4 fw-bold text-primary m-0">
-                            CREATE
-                        </h2>
+                        <span className="analysis-action__chip">{action.title}</span>
+                        <h2 className="analysis-action__title m-0 text-uppercase">{action.title}</h2>
+                        <p className="analysis-action__text mb-0">{action.text} in {sectionName}</p>
                     </Link>
                 </div>
-
-                <div className="col-12 col-md-4">
-                    <Link
-                        to={routes.updateRoute}
-                        className="text-decoration-none d-block rounded-pill border border-3 border-success p-4 bg-light shadow-sm w-100 text-center"
-                    >
-                        <h2 className="fs-4 fw-bold text-success m-0">
-                            UPDATE
-                        </h2>
-                    </Link>
-                </div>
-
-                    <div className="col-12 col-md-4">
-                    <Link
-                        to={routes.deleteRoute}
-                        className="text-decoration-none d-block rounded-pill border border-3 border-danger p-4 bg-light shadow-sm w-100 text-center"
-                    >
-                        <h2 className="fs-4 fw-bold text-danger m-0">
-                            DELETE
-                        </h2>
-                    </Link>
-                </div>
-
+                ))}
             </div>
         </div>
     )

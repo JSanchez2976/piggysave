@@ -3,7 +3,7 @@ function CustomButton({onClick=null, type="button",className="",text=""}) {
         <button
         onClick={onClick}
         type={type}
-        className={`${className} cust-button`}
+        className={`${className} cust-button app-button`}
         >
             {text}
         </button>

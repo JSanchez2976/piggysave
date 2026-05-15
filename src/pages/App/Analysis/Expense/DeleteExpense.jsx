@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AppBackground } from "../../../../components"
+import { useNavigate } from 'react-router-dom';
 
 function DeleteExpense() {
+    const navigate = useNavigate()
     const [expenses, setExpenses] = useState([]);
     const [selectedExpenseId, setSelectedExpenseId] = useState(null);
     const [deleting, setDeleting] = useState(false);
@@ -162,7 +164,13 @@ function DeleteExpense() {
                         </div>
                     )}
                 </div>
-
+                    <button
+                        type="button"
+                        className="btn btn-danger rounded-pill w-50 px-5 mt-3 fw-bold"
+                        onClick={() => navigate(-1)}
+                    >
+                        BACK
+                    </button>
             </div>
 
         </AppBackground>

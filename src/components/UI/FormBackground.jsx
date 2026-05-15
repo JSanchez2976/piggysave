@@ -1,21 +1,19 @@
 function FormBackground({body,title=""}) {
     return (
-        <div className="vh-100 d-flex flex-column">
-            <div className="vw-100 bg-green-solid d-flex justify-content-center align-items-center position-relative px-5"
-                style={{ height: "35%" }}>
-                <h1 className="text-green-dark">{title}</h1>
-            </div>
+        <div className="auth-shell">
+            <div className="auth-panel fade-in">
+                <div className="auth-hero d-flex flex-column justify-content-end gap-3">
+                    <p className="app-shell__eyebrow mb-0">PiggySave access</p>
+                    <h1 className="mb-0">{title}</h1>
+                    <p>
+                        Manten el control de ingresos, gastos y categorias desde una experiencia enfocada en claridad y rapidez.
+                    </p>
+                </div>
 
-            <div className="vw-100 bg-white-mint d-flex flex-column justify-content-around align-items-center z-1 position-absolute p-5 gap-3"
-                style={{
-                    height: "75%",
-                    bottom: 0,
-                    borderTopRightRadius: "7%",
-                    borderTopLeftRadius: "7%"
-                }}>
-                {body}
+                <div className="auth-body">
+                    {body}
+                </div>
             </div>
-            
         </div>
     )
 }

@@ -5,17 +5,16 @@ import { NavLink } from "react-router-dom"
 function NavBarTop() {
     return (
         <>
-            <nav className="navbar navbar-expand-md navbar-dark bg-white-mint fixed-top justify-content-around d-none d-md-flex">
-                <a className="navbar-brand text-black align-items-center d-flex" >
-                    <img src={piggyIcon} alt="Logo" width="30" className="d-inline-block align-text-center mx-2" />
+            <nav className="navbar navbar-expand-md fixed-top justify-content-between d-none d-md-flex app-nav-top">
+                <a className="navbar-brand align-items-center d-flex app-nav-brand" >
+                    <img src={piggyIcon} alt="Logo" width="32" className="d-inline-block align-text-center me-2" />
                     PiggySave
                 </a>
-                <div className="container-fluid ">
-                    <div className="navbar-nav gap-3">
+                <div className="app-nav-links">
                         <NavLink
                             to="/home"
                             className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
+                                `nav-link app-nav-link ${isActive ? "active" : ""}`
                             }
                         >
                             Home
@@ -24,7 +23,7 @@ function NavBarTop() {
                         <NavLink
                             to="/analysis"
                             className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
+                                `nav-link app-nav-link ${isActive ? "active" : ""}`
                             }
                         >
                             Analysis
@@ -33,7 +32,7 @@ function NavBarTop() {
                         <NavLink
                             to="/categories"
                             className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
+                                `nav-link app-nav-link ${isActive ? "active" : ""}`
                             }
                         >
                             Categories
@@ -42,12 +41,11 @@ function NavBarTop() {
                         <NavLink
                             to="/profile"
                             className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
+                                `nav-link app-nav-link ${isActive ? "active" : ""}`
                             }
                         >
                             Profile
                         </NavLink>
-                    </div>
                 </div>
             </nav>
         </>

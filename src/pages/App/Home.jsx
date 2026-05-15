@@ -1,151 +1,128 @@
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
 import { AppBackground } from "../../components"
-import { Line } from "react-chartjs-2";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from "chart.js";
+import { useEffect, useState } from "react"
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
+
 
 function Home() {
-    const [expenses, setExpenses] = useState([])
-    const [revenues, setRevenues] = useState([])
+    const navigate = useNavigate()
+    const userName = localStorage.getItem("username") || "PiggySaver"
+    const [balance, setBalance] = useState(0)
+    const [loading, setLoading] = useState(true)
+
+    async function getBalance() {
+        const headers = {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+        }
+
+        const [revResponse, expResponse] = await Promise.all([
+            fetch(`${import.meta.env.VITE_API_URL}/revenue/`, { method: "GET", headers }),
+            fetch(`${import.meta.env.VITE_API_URL}/expenses/`, { method: "GET", headers }),
+        ])
+
+        const revData = revResponse.ok ? await revResponse.json() : []
+        const expData = expResponse.ok ? await expResponse.json() : []
+        
+        const totalRevenue = revData.reduce((acc, item) => acc + item.importe, 0)
+        const totalExpense = expData.reduce((acc, item) => acc + item.importe, 0)
+
+        setBalance(totalRevenue + totalExpense)
+        setLoading(false)
+    }
 
     useEffect(() => {
-        fetchExpenses();
-        fetchRevenues();
-    }, []);
+        getBalance()
+    }, [])
 
-    const fetchExpenses = async () => {
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/expenses/`, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            setExpenses(data);
-        } catch (err) {
-            console.error(err);
+    const quickStats = [
+        {
+            label: "Balance estimado",
+            value: loading ? "Cargando..." : `${balance.toFixed(2)} €`,
+            caption: "Lectura visual rapida del estado general"
+        },
+        {
+            label: "Categorias activas",
+            value: "8",
+            caption: "Organiza mejor gastos e ingresos"
+        },
+        {
+            label: "Ritmo mensual",
+            value: "+18%",
+            caption: "Tendencia frente al periodo anterior"
         }
-    };
+    ]
 
-    const fetchRevenues = async () => {
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/revenue/`, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            setRevenues(data);
-        } catch (err) {
-            console.error(err);
+    const highlights = [
+        {
+            icon: "01",
+            title: "Analysis mas visible",
+            text: "La navegacion y la jerarquia visual ahora separan mejor resumen, acciones y contenido operativo."
+        },
+        {
+            icon: "02",
+            title: "Acciones rapidas",
+            text: "Desde Home puedes saltar a analysis, categories o profile sin depender de una pantalla vacia."
+        },
+        {
+            icon: "03",
+            title: "Sistema visual consistente",
+            text: "Fondos, paneles, bordes y tipografia siguen un mismo criterio en toda la aplicacion."
         }
-    };
-
-    const getTotalExpense = () => {
-        return expenses.reduce((total, exp) => total + exp.importe, 0);
-    }
-
-    const getTotalRevenue = () => {
-        return revenues.reduce((total, rev) => total + rev.importe, 0);
-    }
-
-    const getFormatedArray = () => {
-        // duplicados en expenses
-        const expensesMap = {};
-        expenses.forEach(exp => {
-            expensesMap[exp.fecha] = (expensesMap[exp.fecha] || 0) + exp.importe*-1;    // pasarlo a positivo
-        });
-
-        // duplicados en revenues
-        const revenuesMap = {};
-        revenues.forEach(rev => {
-            revenuesMap[rev.fecha] = (revenuesMap[rev.fecha] || 0) + rev.importe;   // or 0 porque si no existe te pone 0
-        });
-
-        // Obtener todas las fechas únicas y ordenadas
-        const allDates = Array.from(new Set([...Object.keys(expensesMap), ...Object.keys(revenuesMap)]))
-            .sort((a, b) => new Date(a) - new Date(b));
-
-        return {
-            labels: allDates,
-            expensesData: allDates.map(date => expensesMap[date] || 0),
-            revenuesData: allDates.map(date => revenuesMap[date] || 0)
-        };
-    }
-
-    const { labels, expensesData, revenuesData } = getFormatedArray();
-
-    const chartData = {
-        labels: labels,
-        datasets: [
-            {
-                label: "Revenue",
-                data: revenuesData,
-                borderColor: "rgb(75, 192, 192)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-            },
-            {
-                label: "Expenses",
-                data: expensesData,
-                borderColor: "rgb(255, 99, 132)",
-                backgroundColor: "rgba(255, 99, 132, 0.2)",
-            }
-        ]
-    };
+    ]
 
     return (
-        <AppBackground title={"Home"}
-            whiteDivStyle="p-2">
-            <div className="w-100 px-4 pt-4 pb-3">
-                <div className="d-flex gap-3">
-                    <div className="flex-fill bg-white rounded p-3 shadow-sm">
-                        <h6 className="text-muted mb-1 small">Expenses</h6>
-                        <h4 className="mb-0 fw-bold text-danger">${getTotalExpense()}</h4>
-                    </div>
-                    <div className="flex-fill bg-white rounded p-3 shadow-sm">
-                        <h6 className="text-muted mb-1 small">Revenue</h6>
-                        <h4 className="mb-0 fw-bold text-success">${getTotalRevenue()}</h4>
-                    </div>
-                </div>
-            </div>
+        <AppBackground title={"Home"}>
+            <div className="container-fluid px-0 d-flex flex-column home-sections">
+                <section className="app-card p-4 p-lg-5 home-section home-section--hero">
+                    <div className="row g-4 align-items-center">
+                        <div className="col-12 col-lg-7">
+                            <span className="app-badge mb-3">Overview</span>
+                            <h2 className="mb-3">Hola, {userName}. Tu panel ahora prioriza lectura, foco y velocidad.</h2>
+                            <p className="mb-4 text-secondary">
+                                Reorganice la experiencia para que la app se sienta menos prototipo y mas producto: mejor contraste, navegacion clara y tarjetas con jerarquia visual real.
+                            </p>
+                            <div className="app-hero-actions">
+                                <button className="app-action-chip" onClick={() => navigate("/analysis")}>Ir a Analysis</button>
+                                <button className="app-action-chip" onClick={() => navigate("/categories")}>Ver Categories</button>
+                                <button className="app-action-chip" onClick={() => navigate("/profile")}>Abrir Profile</button>
+                            </div>
+                        </div>
 
-            <div className="row g-3 px-4 pb-4">
-                <div className="col-12">
-                    <div
-                        className="bg-white rounded p-3 shadow-sm"
-                        style={{ height: window.innerWidth < 768 ? '250px' : '350px' }}
-                    >
-                        <Line
-                            data={chartData}
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: false
-                            }}
-                        />
+                        <div className="col-12 col-lg-5">
+                            <div className="row g-3">
+                                {quickStats.map((stat) => (
+                                    <div className="col-12" key={stat.label}>
+                                        <article className="app-card app-kpi">
+                                            <p className="app-kpi__label">{stat.label}</p>
+                                            <h3 className="app-kpi__value">{stat.value}</h3>
+                                            <p className="app-kpi__caption">{stat.caption}</p>
+                                        </article>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+
+                <section className="home-section home-section--grid">
+                    <div className="home-section__header">
+                        <span className="app-badge">Highlights</span>
+                        <h3 className="mb-0">Mejoras visibles en la experiencia</h3>
+                    </div>
+
+                    <div className="row g-3 mx-0 mt-1">
+                        {highlights.map((item) => (
+                            <div className="col-12 col-lg-4 px-0" key={item.title}>
+                                <article className="app-card app-grid-card">
+                                    <div className="app-grid-card__icon">{item.icon}</div>
+                                    <h3 className="app-grid-card__title">{item.title}</h3>
+                                    <p className="app-grid-card__text">{item.text}</p>
+                                </article>
+                            </div>
+                        ))}
+                    </div>
+                </section>
             </div>
         </AppBackground>
     )

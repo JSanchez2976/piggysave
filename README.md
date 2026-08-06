@@ -160,12 +160,11 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto con la siguiente variable:
 
 ```env
-VITE_API_URL=http://localhost:8000
+VITE_API_URL=https://tu-api.com
 ```
+Sustituye el valor por la URL de la API proporcionada por el equipo de backend. Esta variable define la base sobre la que la aplicación construye todas sus peticiones de autenticación, ingresos, gastos y categorías.
 
-Esta variable define la URL base de la API que la aplicación consumirá para la autenticación y la gestión de ingresos, gastos y categorías.
-
-La sesión del usuario se gestiona mediante un token guardado en `localStorage`, que se envía automáticamente en la cabecera `Authorization: Bearer <token>` en todas las peticiones a rutas protegidas.
+La sesión del usuario se gestiona mediante un token guardado en localStorage, que se envía automáticamente en la cabecera Authorization: Bearer <token> en todas las peticiones a rutas protegidas.
 
 ---
 

@@ -10,16 +10,16 @@ El objetivo del proyecto es ofrecer una herramienta clara y minimalista para que
 
 ### Funcionalidades principales
 
-- 🔐 **Autenticación completa**: registro, inicio de sesión y recuperación/cambio de contraseña mediante token de sesión.
-- 🛡️ **Rutas protegidas**: acceso controlado a la aplicación mediante sesión activa, redirigiendo automáticamente a los usuarios no autenticados.
-- 💵 **Gestión de ingresos**: alta, edición y borrado de movimientos de ingreso.
-- 💸 **Gestión de gastos**: alta, edición y borrado de movimientos de gasto.
-- 🏷️ **Categorías**: cada movimiento se asocia a una categoría, visualizada en una cuadrícula clara e intuitiva.
-- 📊 **Panel de análisis**: balance neto, ratio de gasto sobre ingreso y evolución mensual (últimos 6 meses) representados con gráficos propios construidos en CSS.
-- 🏠 **Dashboard (Home)**: pantalla principal con el balance estimado y accesos directos a las secciones clave.
-- 👤 **Perfil de usuario**: gestión de la sesión y cierre de sesión.
-- 🚀 **Onboarding**: pantalla de bienvenida con slides introductorios para nuevos usuarios.
-- 📱 **Diseño responsive**: navegación inferior en móvil y barra superior en escritorio, adaptando la experiencia a cada dispositivo.
+- **Autenticación completa**: registro, inicio de sesión y recuperación/cambio de contraseña mediante token de sesión.
+- **Rutas protegidas**: acceso controlado a la aplicación mediante sesión activa, redirigiendo automáticamente a los usuarios no autenticados.
+- **Gestión de ingresos**: alta, edición y borrado de movimientos de ingreso.
+- **Gestión de gastos**: alta, edición y borrado de movimientos de gasto.
+- **Categorías**: cada movimiento se asocia a una categoría, visualizada en una cuadrícula clara e intuitiva.
+- **Panel de análisis**: balance neto, ratio de gasto sobre ingreso y evolución mensual (últimos 6 meses) representados con gráficos propios construidos en CSS.
+- **Dashboard (Home)**: pantalla principal con el balance estimado y accesos directos a las secciones clave.
+- **Perfil de usuario**: gestión de la sesión y cierre de sesión.
+- **Onboarding**: pantalla de bienvenida con slides introductorios para nuevos usuarios.
+- **Diseño responsive**: navegación inferior en móvil y barra superior en escritorio, adaptando la experiencia a cada dispositivo.
 
 ### Casos de uso
 

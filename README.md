@@ -4,7 +4,6 @@
 
 El objetivo del proyecto es ofrecer una herramienta clara y minimalista para que cualquier usuario pueda registrar sus movimientos económicos y entender de un vistazo en qué está gastando e ingresando su dinero.
 
-Cabe recalcar que la web no procesa las peticiones debido a que la API está apagada a día de hoy
 ---
 
 ## Características

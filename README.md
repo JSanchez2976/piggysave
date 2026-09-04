@@ -2,7 +2,8 @@
 
 **PiggySave** es una aplicación web de finanzas personales que permite llevar el control de ingresos y gastos de forma sencilla, visual y organizada por categorías. Construida con React y Vite, ofrece una experiencia moderna, rápida y totalmente responsive, con un panel de análisis que resume el balance del usuario y su evolución mes a mes.
 
-El objetivo del proyecto es ofrecer una herramienta clara y minimalista para que cualquier usuario pueda registrar sus movimientos económicos y entender de un vistazo en qué está gastando e ingresando su dinero.
+El objetivo del proyecto es ofrecer una herramienta clara y minimalista para que cualquier usuario pueda registrar sus movimientos económicos y entender de un vistazo en qué está gastando e ingresando su dinero, la API 
+no está encendida ahora mismo por lo que no funciona.
 
 ---
 
